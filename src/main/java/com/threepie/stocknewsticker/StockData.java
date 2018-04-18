@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.threepie.stocknewsticker;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -34,22 +34,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
-import java.io.IOException;
-import java.io.PrintStream;
 import java.net.URL;
-import java.net.URLConnection;
-
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 @Controller
 @SpringBootApplication
-public class Main {
+public class StockData {
 
   @Value("${spring.datasource.url}")
   private String dbUrl;
@@ -60,7 +52,7 @@ public class Main {
   private DataSource dataSource;
 
   public static void main(String[] args) throws Exception {
-    SpringApplication.run(Main.class, args);
+    SpringApplication.run(StockData.class, args);
     System.out.println(args.toString());
   }
 
