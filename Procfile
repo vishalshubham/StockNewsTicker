@@ -1,0 +1,1 @@
+web: java -jar target/news-ticker-api-1.0.jar
