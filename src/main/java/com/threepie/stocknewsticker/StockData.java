@@ -110,7 +110,7 @@ public class StockData {
 
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
-        output.add(model.get("symbol") + "Vishal read from DB: " + rs.getTimestamp("tick"));
+        output.add(model.toString() + "Vishal read from DB: " + rs.getTimestamp("tick"));
       }
 
       model.put("records", output);
