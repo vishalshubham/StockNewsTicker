@@ -28,8 +28,6 @@ public class StockNewsController {
 	     
 	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
 	     
-	    return result.toString();
-	    
-        // return "Greetings from Spring Boot!";
+	    return result.getBody();
     }
 }
