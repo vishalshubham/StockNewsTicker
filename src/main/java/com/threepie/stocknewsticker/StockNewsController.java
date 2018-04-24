@@ -21,6 +21,6 @@ public class StockNewsController {
 
 		if (handler==null) handler = new StockNewsHandler();
 
-		return handler.getStockData(symbol, from, to);
+		return handler.getStockInformation(symbol, from, to);
 	}
 }
