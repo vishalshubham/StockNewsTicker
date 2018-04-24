@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker;
+package com.threepie.stocknewsticker.external;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 
-public class StockDataGetter {
+public class ApiCaller {
 
 	public static String callApi(String uri) {
 		RestTemplate restTemplate = new RestTemplate();

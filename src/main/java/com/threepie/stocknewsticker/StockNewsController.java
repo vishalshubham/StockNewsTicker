@@ -1,6 +1,10 @@
 package com.threepie.stocknewsticker;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.threepie.stocknewsticker.external.ApiCaller;
+import com.threepie.stocknewsticker.utils.Constants;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -8,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class StockNewsController {
 
 	@RequestMapping("/getStockData")
-    public String getStockData(@RequestParam("symbol") String symbol) {
+    public String getStockData(
+    		@RequestParam("symbol") String symbol,
+    		@RequestParam("from") String from,
+    		@RequestParam("to") String to) {
+
 		final String uri = 
 				Constants.BASE_URL + Constants.API_EVERYTHING +
 				"?apiKey=" + Constants.API_KEY +
@@ -17,6 +25,6 @@ public class StockNewsController {
 				"&to=" + "2018-04-24" +
 				"&language=" + "en" +
 				"&sortBy=relevancy";
-		return StockDataGetter.callApi(uri);
+		return ApiCaller.callApi(uri);
 	}
 }
