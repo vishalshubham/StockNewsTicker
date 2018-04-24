@@ -9,8 +9,10 @@ public class StockNewsHandler {
     		String symbol,
     		String from,
     		String to) {
-		
-		return getStockData(symbol, from, to);
+
+		return 
+			"{data:{" + getStockData(symbol, from, to) + "}," +
+			"news:{" + getStockNews(symbol, from, to) + "}}";
 	}
 
 	public String getStockNews(
