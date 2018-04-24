@@ -1,6 +1,6 @@
 package com.threepie.stocknewsticker;
 
-import org.json.JSONObject;
+//import org.json.JSONObject;
 
 import com.threepie.stocknewsticker.external.ApiCaller;
 import com.threepie.stocknewsticker.utils.Constants;
@@ -12,7 +12,7 @@ public class StockNewsHandler {
     		String from,
     		String to) {
 
-		JSONObject jsonObject = new JSONObject();
+		//JSONObject jsonObject = new JSONObject();
 
 		final String newsUri = 
 				Constants.BASE_URL + Constants.API_EVERYTHING +
