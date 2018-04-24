@@ -11,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class StockNewsController {
@@ -19,7 +20,7 @@ public class StockNewsController {
     public String index() {
 		
 		final String uri = "https://newsapi.org/v2/sources?apiKey=bebc2e5b6fe64fdd94aadbb64fd02bfa";
-	     
+
 	    RestTemplate restTemplate = new RestTemplate();
 	     
 	    HttpHeaders headers = new HttpHeaders();
@@ -30,4 +31,9 @@ public class StockNewsController {
 	     
 	    return result.getBody();
     }
+
+	@RequestMapping("/getStockData")
+    public String getStockData(@RequestParam("symbol") String symbol) {
+		return "Hehehehehe " + symbol;
+	}
 }
