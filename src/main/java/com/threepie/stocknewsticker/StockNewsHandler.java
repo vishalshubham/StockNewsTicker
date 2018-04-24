@@ -3,16 +3,19 @@ package com.threepie.stocknewsticker;
 import com.threepie.stocknewsticker.external.ApiCaller;
 import com.threepie.stocknewsticker.utils.Constants;
 
+import net.minidev.json.JSONObject;
+
 public class StockNewsHandler {
 
 	public String getStockInformation(
     		String symbol,
     		String from,
     		String to) {
+		JSONObject json = new JSONObject();
+		json.put("data", getStockData(symbol, from, to));
+		json.put("news", getStockNews(symbol, from, to));
 
-		return 
-			"{data:{" + getStockData(symbol, from, to) + "}," +
-			"news:{" + getStockNews(symbol, from, to) + "}}";
+		return json.toString();
 	}
 
 	public String getStockNews(
