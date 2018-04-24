@@ -23,32 +23,43 @@ public class StockNewsHandler {
 		return json.toString();
 	}
 
-	public String getStockNews(
+	public JSONObject getStockNews(
     		String symbol,
     		String from,
     		String to) {
-		final String newsUri = 
-				Constants.NEWS_BASE_URL + Constants.NEWS_API +
-				"?apiKey=" + Constants.NEWS_API_KEY +
-				"&q=" + symbol +
-				"&from=" + from +
-				"&to=" + to +
-				"&language=en" +
-				"&sortBy=popularity";
-		return ApiCaller.callApi(newsUri);
+		try {
+			final String newsUri = 
+					Constants.NEWS_BASE_URL + Constants.NEWS_API +
+					"?apiKey=" + Constants.NEWS_API_KEY +
+					"&q=" + symbol +
+					"&from=" + from +
+					"&to=" + to +
+					"&language=en" +
+					"&sortBy=popularity";
+
+			return new JSONObject(ApiCaller.callApi(newsUri));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public String getStockData(
+	public JSONObject getStockData(
     		String symbol,
     		String from,
     		String to) {
-		final String stockUri = 
-				Constants.STOCK_BASE_URL + Constants.STOCK_API +
-				"?apikey=" + Constants.STOCK_API_KEY +
-				"&symbol=" + symbol +
-				"&function=TIME_SERIES_INTRADAY" +
-				"&interval=5min" +
-				"&outputsize=full";
-		return ApiCaller.callApi(stockUri);
+		try {
+			final String stockUri = 
+					Constants.STOCK_BASE_URL + Constants.STOCK_API +
+					"?apikey=" + Constants.STOCK_API_KEY +
+					"&symbol=" + symbol +
+					"&function=TIME_SERIES_INTRADAY" +
+					"&interval=5min" +
+					"&outputsize=full";
+			return new JSONObject(ApiCaller.callApi(stockUri));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
