@@ -35,6 +35,7 @@ public class StockNewsHandler {
 					"&to=" + to +
 					"&language=en" +
 					"&sortBy=popularity";
+			System.out.println("*****" + newsUri);
 			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
 			JSONObject result  = new JSONObject();
 			result.put("data", obj.get("articles"));
