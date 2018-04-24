@@ -10,7 +10,7 @@ public class StockNewsHandler {
     		String from,
     		String to) {
 		
-		return getStockNews(symbol, from, to);
+		return getStockData(symbol, from, to);
 	}
 
 	public String getStockNews(
