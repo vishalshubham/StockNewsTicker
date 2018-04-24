@@ -1,9 +1,10 @@
 package com.threepie.stocknewsticker;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.threepie.stocknewsticker.external.ApiCaller;
 import com.threepie.stocknewsticker.utils.Constants;
-
-import net.minidev.json.JSONObject;
 
 public class StockNewsHandler {
 
@@ -12,8 +13,12 @@ public class StockNewsHandler {
     		String from,
     		String to) {
 		JSONObject json = new JSONObject();
-		json.put("data", getStockData(symbol, from, to));
-		json.put("news", getStockNews(symbol, from, to));
+		try {
+			json.put("data", getStockData(symbol, from, to));
+			json.put("news", getStockNews(symbol, from, to));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 
 		return json.toString();
 	}
