@@ -36,7 +36,9 @@ public class StockNewsHandler {
 					"&language=en" +
 					"&sortBy=popularity";
 			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
-			return (JSONObject) obj.get("articles");
+			JSONObject result  = new JSONObject();
+			result.put("data", obj.get("articles"));
+			return result;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
