@@ -2,7 +2,6 @@ package com.threepie.stocknewsticker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.threepie.stocknewsticker.external.ApiCaller;
 import com.threepie.stocknewsticker.utils.Constants;
 
@@ -36,8 +35,8 @@ public class StockNewsHandler {
 					"&to=" + to +
 					"&language=en" +
 					"&sortBy=popularity";
-
-			return new JSONObject(ApiCaller.callApi(newsUri));
+			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
+			return (JSONObject) obj.get("articles");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
