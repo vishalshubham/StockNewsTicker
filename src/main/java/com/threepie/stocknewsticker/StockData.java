@@ -61,7 +61,7 @@ public class StockData {
     return "index";
   }
 
-  @RequestMapping("/stockData")
+  @RequestMapping("/getStockData")
   String getStockData(Map<String, Object> model) {
     try {
 
