@@ -14,8 +14,8 @@ public class StockNewsHandler {
     		String to) {
 		JSONObject json = new JSONObject();
 		try {
-			json.put("data", getStockData(symbol, from, to));
 			json.put("news", getStockNews(symbol, from, to));
+			json.put("data", getStockData(symbol, from, to));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
