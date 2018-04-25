@@ -19,7 +19,7 @@ public class ApiCaller {
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 	    ResponseEntity<JSONObject> result = restTemplate.exchange(uri, HttpMethod.GET, entity, JSONObject.class);
-		System.out.println("External response:" + result.hasBody());
+		System.out.println("External response:" + result.toString());
 	    return result.getBody();
 	}
 }
