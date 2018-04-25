@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class ApiCaller {
 
 	public static String callApi(String uri) {
+		System.out.println("External call:" + uri);
 		RestTemplate restTemplate = new RestTemplate();
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
