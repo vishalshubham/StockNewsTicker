@@ -16,11 +16,10 @@ public class StockNewsController {
 
 	@RequestMapping(value = "/stockdata", method = RequestMethod.GET, produces = "application/json")
     public JSONObject getStockData(
-    		@RequestParam("symbol") String symbol,
-    		@RequestParam("time") String time) {
+    		@RequestParam("symbol") String symbol) {
 
 		if (handler==null) handler = new StockNewsHandler();
 
-		return handler.getStockInformation(symbol, time);
+		return handler.getStockInformation(symbol);
 	}
 }

@@ -10,14 +10,12 @@ import com.threepie.stocknewsticker.utils.Constants;
 public class StockNewsHandler {
 
 	public JSONObject getStockInformation(
-    		String symbol,
-    		String time) {
-		return getStockData(symbol, time);
+    		String symbol) {
+		return getStockData(symbol);
 	}
 
 	public JSONObject getStockData(
-    		String symbol,
-    		String time) {
+    		String symbol) {
 		JSONObject result = new JSONObject();
 		try {
 			final String stockUri = 
