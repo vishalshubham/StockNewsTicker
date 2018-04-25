@@ -9,9 +9,9 @@ import com.threepie.stocknewsticker.utils.Constants;
 
 public class StockNewsHandler {
 
-	public JSONObject getStockInformation(
+	public String getStockInformation(
     		String symbol) {
-		return getStockData(symbol);
+		return getStockData(symbol).toString();
 	}
 
 	public JSONObject getStockData(
