@@ -24,8 +24,7 @@ public class StockNewsHandler {
 					"&symbol=" + symbol +
 					"&function=TIME_SERIES_INTRADAY" +
 					"&interval=15min" +
-					"&outputsize=full" +
-					"&time=" + DateFormat.getInstance().toString();
+					"&outputsize=full";
 			JSONObject stockNode = new JSONObject(ApiCaller.callApi(stockUri));
 			JSONObject metadata = (JSONObject) stockNode.get("Meta Data");
 			String date = metadata.getString("3. Last Refreshed");
