@@ -35,7 +35,6 @@ public class StockNewsHandler {
 					"&to=" + to +
 					"&language=en" +
 					"&sortBy=popularity";
-			System.out.println("*****" + newsUri);
 			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
 			JSONObject result  = new JSONObject();
 			result.put("data", obj.get("articles"));
@@ -56,7 +55,7 @@ public class StockNewsHandler {
 					"?apikey=" + Constants.STOCK_API_KEY +
 					"&symbol=" + symbol +
 					"&function=TIME_SERIES_INTRADAY" +
-					"&interval=5min" +
+					"&interval=15min" +
 					"&outputsize=full";
 			return new JSONObject(ApiCaller.callApi(stockUri));
 		} catch (JSONException e) {
