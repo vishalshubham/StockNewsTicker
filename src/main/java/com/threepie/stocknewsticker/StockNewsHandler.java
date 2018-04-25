@@ -47,7 +47,7 @@ public class StockNewsHandler {
 			final String newsUri = 
 					Constants.NEWS_BASE_URL + Constants.NEWS_API +
 					"?apiKey=" + Constants.NEWS_API_KEY +
-					"&q=" + symbol + "%20stock" +
+					"&q=" + symbol +
 					"&from=" + time.substring(0, 10) +
 					"&to=" + time.substring(0, 10) +
 					"&language=en" +
