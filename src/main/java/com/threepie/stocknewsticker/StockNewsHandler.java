@@ -47,9 +47,9 @@ public class StockNewsHandler {
 			final String newsUri = 
 					Constants.NEWS_BASE_URL + Constants.NEWS_API +
 					"?apiKey=" + Constants.NEWS_API_KEY +
-					"&q=" + symbol +
-					"&from=" + time.substring(0, 10) + "T00:00:00" +
-					"&to=" + time +
+					"&q=" + symbol + "%20stock" +
+					"&from=" + time.substring(0, 10) +
+					"&to=" + time.substring(0, 10) +
 					"&language=en" +
 					"&sortBy=popularity";
 			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
