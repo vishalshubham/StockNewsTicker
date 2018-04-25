@@ -1,5 +1,7 @@
 package com.threepie.stocknewsticker;
 
+import java.text.DateFormat;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.threepie.stocknewsticker.external.ApiCaller;
@@ -56,7 +58,8 @@ public class StockNewsHandler {
 					"&symbol=" + symbol +
 					"&function=TIME_SERIES_INTRADAY" +
 					"&interval=15min" +
-					"&outputsize=full";
+					"&outputsize=full" +
+					"&time=" + DateFormat.getInstance().toString();
 			return new JSONObject(ApiCaller.callApi(stockUri));
 		} catch (JSONException e) {
 			e.printStackTrace();
