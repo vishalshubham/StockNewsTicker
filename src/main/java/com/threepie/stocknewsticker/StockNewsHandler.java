@@ -25,7 +25,7 @@ public class StockNewsHandler {
 					"&function=TIME_SERIES_INTRADAY" +
 					"&interval=15min" +
 					"&outputsize=full";
-			JSONObject stockNode = ApiCaller.callApi(stockUri);
+			JSONObject stockNode = new JSONObject(ApiCaller.callApi(stockUri));
 			JSONObject metadata = (JSONObject) stockNode.get("Meta Data");
 			String date = metadata.getString("3. Last Refreshed");
 			String currentTime = date.replace(" ", "T");
