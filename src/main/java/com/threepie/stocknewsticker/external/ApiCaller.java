@@ -19,6 +19,6 @@ public class ApiCaller {
 	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
 		System.out.println("External response:" + result.toString());
-	    return result.getBody();
+	    return result.getBody().substring(result.getBody().charAt('{'), result.getBody().length());
 	}
 }
