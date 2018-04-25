@@ -1,5 +1,6 @@
 package com.threepie.stocknewsticker.external;
 
+import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,14 +11,14 @@ import java.util.Arrays;
 
 public class ApiCaller {
 
-	public static String callApi(String uri) {
+	public static JSONObject callApi(String uri) {
 		System.out.println("External call:" + uri);
 		RestTemplate restTemplate = new RestTemplate();
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setExpires(60000);
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+	    ResponseEntity<JSONObject> result = restTemplate.exchange(uri, HttpMethod.GET, entity, JSONObject.class);
 	    return result.getBody();
 	}
 }
