@@ -28,6 +28,7 @@ public class StockNewsHandler {
     		String symbol,
     		String from,
     		String to) {
+		JSONObject json = new JSONObject();
 		try {
 			final String stockUri = 
 					Constants.STOCK_BASE_URL + Constants.STOCK_API +
@@ -40,7 +41,8 @@ public class StockNewsHandler {
 			JSONObject stockNode = new JSONObject(ApiCaller.callApi(stockUri));
 			JSONObject metadata = (JSONObject) stockNode.get("Meta Data");
 			String date = metadata.getString("3. Last Refreshed");
-			System.out.println("Date :" + date);
+			System.out.println("Date :" + date.substring(0, 10));
+			json.put("data", stockNode);
 			return stockNode;
 		} catch (JSONException e) {
 			e.printStackTrace();
