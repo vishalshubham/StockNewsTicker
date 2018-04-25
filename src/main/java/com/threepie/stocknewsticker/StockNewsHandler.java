@@ -9,26 +9,16 @@ import com.threepie.stocknewsticker.utils.Constants;
 
 public class StockNewsHandler {
 
-	public String getStockInformation(
+	public JSONObject getStockInformation(
     		String symbol,
-    		String from,
-    		String to) {
-		JSONObject json = new JSONObject();
-		try {
-			//json.put("news", getStockNews(symbol, from, to));
-			json.put("data", getStockData(symbol, from, to));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-		return json.toString();
+    		String time) {
+		return getStockData(symbol, time);
 	}
 
 	public JSONObject getStockData(
     		String symbol,
-    		String from,
-    		String to) {
-		JSONObject json = new JSONObject();
+    		String time) {
+		JSONObject result = new JSONObject();
 		try {
 			final String stockUri = 
 					Constants.STOCK_BASE_URL + Constants.STOCK_API +
@@ -41,9 +31,11 @@ public class StockNewsHandler {
 			JSONObject stockNode = new JSONObject(ApiCaller.callApi(stockUri));
 			JSONObject metadata = (JSONObject) stockNode.get("Meta Data");
 			String date = metadata.getString("3. Last Refreshed");
-			System.out.println("Date :" + date.substring(0, 10));
-			json.put("data", stockNode);
-			return stockNode;
+			String currentTime = date.replace(" ", "T");
+
+			result.put("data", stockNode);
+			result.put("news", getStockNews(symbol, currentTime));
+			return result;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -52,15 +44,14 @@ public class StockNewsHandler {
 
 	public JSONObject getStockNews(
     		String symbol,
-    		String from,
-    		String to) {
+    		String time) {
 		try {
 			final String newsUri = 
 					Constants.NEWS_BASE_URL + Constants.NEWS_API +
 					"?apiKey=" + Constants.NEWS_API_KEY +
 					"&q=" + symbol +
-					"&from=" + from +
-					"&to=" + to +
+					"&from=" + time.substring(0, 10) + "T00:00:00" +
+					"&to=" + time +
 					"&language=en" +
 					"&sortBy=popularity";
 			JSONObject obj = new JSONObject(ApiCaller.callApi(newsUri));
