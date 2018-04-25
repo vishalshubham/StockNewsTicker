@@ -14,6 +14,7 @@ public class ApiCaller {
 		System.out.println("External call:" + uri);
 		RestTemplate restTemplate = new RestTemplate();
 	    HttpHeaders headers = new HttpHeaders();
+	    headers.setExpires(60000);
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);

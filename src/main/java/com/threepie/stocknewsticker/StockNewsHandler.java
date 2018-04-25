@@ -15,13 +15,37 @@ public class StockNewsHandler {
     		String to) {
 		JSONObject json = new JSONObject();
 		try {
-			json.put("news", getStockNews(symbol, from, to));
+			//json.put("news", getStockNews(symbol, from, to));
 			json.put("data", getStockData(symbol, from, to));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		return json.toString();
+	}
+
+	public JSONObject getStockData(
+    		String symbol,
+    		String from,
+    		String to) {
+		try {
+			final String stockUri = 
+					Constants.STOCK_BASE_URL + Constants.STOCK_API +
+					"?apikey=" + Constants.STOCK_API_KEY +
+					"&symbol=" + symbol +
+					"&function=TIME_SERIES_INTRADAY" +
+					"&interval=15min" +
+					"&outputsize=full" +
+					"&time=" + DateFormat.getInstance().toString();
+			JSONObject stockNode = new JSONObject(ApiCaller.callApi(stockUri));
+			JSONObject metadata = (JSONObject) stockNode.get("Meta Data");
+			String date = metadata.getString("3. Last Refreshed");
+			System.out.println("Date :" + date);
+			return stockNode;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public JSONObject getStockNews(
@@ -41,26 +65,6 @@ public class StockNewsHandler {
 			JSONObject result  = new JSONObject();
 			result.put("data", obj.get("articles"));
 			return result;
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public JSONObject getStockData(
-    		String symbol,
-    		String from,
-    		String to) {
-		try {
-			final String stockUri = 
-					Constants.STOCK_BASE_URL + Constants.STOCK_API +
-					"?apikey=" + Constants.STOCK_API_KEY +
-					"&symbol=" + symbol +
-					"&function=TIME_SERIES_INTRADAY" +
-					"&interval=15min" +
-					"&outputsize=full" +
-					"&time=" + DateFormat.getInstance().toString();
-			return new JSONObject(ApiCaller.callApi(stockUri));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
