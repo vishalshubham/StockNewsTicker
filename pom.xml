@@ -17,6 +17,11 @@
 
   <properties>
     <java.version>1.8</java.version>
+    <!-- Added by me -->
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+
+    <!-- Previously added -->  
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <webjars-bootstrap.version>4.0.0</webjars-bootstrap.version>
@@ -26,11 +31,33 @@
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <!-- Added by Vishal -->
+    <dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-client</artifactId>
+		<version>3.0.10.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-json-p-provider</artifactId>
+		<version>3.0.10.Final</version>
+	</dependency>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20090211</version>
 	</dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>23.6-jre</version>
+    </dependency>
+
+    <!-- Previously added -->  
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
