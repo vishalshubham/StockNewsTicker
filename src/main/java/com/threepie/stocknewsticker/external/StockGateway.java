@@ -45,7 +45,7 @@ public abstract class StockGateway extends StockEndpoint {
                                            Client restClient) {
         WebTarget target = buildTarget(apiRequest, restClient);
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON);
-
+        System.out.println("External Stock call: " + target.getUri());
         Response response = builder.get();
         String responseBody = response.readEntity(String.class);
 

@@ -45,7 +45,7 @@ public abstract class ArticleGateway extends NewsEndpoint {
                                            Client restClient) {
         WebTarget target = buildTarget(apiRequest, restClient);
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON);
-
+        System.out.println("External News call: " + target.getUri());
         Response response = builder.header("X-Api-Key", apiRequest.getApikey()).get();
         String responseBody = response.readEntity(String.class);
 
