@@ -60,7 +60,8 @@ public class StockNewsHandler {
 		StockRequestBuilder stockRequest = new StockRequestBuilder()
 				.setSymbol(symbol)
 				.setFunction("TIME_SERIES_INTRADAY")
-				.setInterval("5min");
+				.setInterval("5min")
+				.setOutputsize("full");
 
 		stockRequest.setApikey(Constants.STOCK_API_KEY);
 
