@@ -49,7 +49,8 @@ public class StockNewsController {
 
 		RequestBuilder sourcesRequest = new RequestBuilder()
 				.setQ(symbol + " stock")
-				.setLanguage("en");
+				.setLanguage("en")
+			    .setPage(2);
 
 		ApiArticlesResponse apiArticlesResponse = newsApi.sendEverythingRequest(sourcesRequest);
 
