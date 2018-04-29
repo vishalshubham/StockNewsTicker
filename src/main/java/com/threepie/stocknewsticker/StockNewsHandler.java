@@ -8,6 +8,7 @@ import com.threepie.stocknewsticker.request.StockRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
 import com.threepie.stocknewsticker.response.ApiStockInformationResponse;
+import com.threepie.stocknewsticker.utils.Constants;
 
 public class StockNewsHandler {
 	NewsApi newsApi;
@@ -94,6 +95,8 @@ public class StockNewsHandler {
 				.setLanguage("en")
 			    .setPage(2);
 
+		sourcesRequest.setApikey(Constants.NEWS_API_KEY);
+
 		ApiArticlesResponse apiArticlesResponse = newsApi.sendEverythingRequest(sourcesRequest);
 
 		return apiArticlesResponse.getString();
@@ -105,6 +108,8 @@ public class StockNewsHandler {
 				.setSymbol(symbol)
 				.setFunction("TIME_SERIES_INTRADAY")
 				.setInterval("5min");
+
+		stockRequest.setApikey(Constants.STOCK_API_KEY);
 
 		ApiStockInformationResponse apiStockInformationResponse = stockApi.sendStockRequest(stockRequest);
 

@@ -5,6 +5,11 @@ package com.threepie.stocknewsticker.exception;
  */
 public class AuthFailureException extends RuntimeException {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * @param message The message to attach to this Exception upon throwing.
      */
     public AuthFailureException(String message) {

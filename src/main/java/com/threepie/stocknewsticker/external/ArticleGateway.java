@@ -53,5 +53,4 @@ public abstract class ArticleGateway extends NewsEndpoint {
         this.checkExceptions(response, responseObj);
         return responseObj;
     }
-
 }

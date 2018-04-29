@@ -6,14 +6,14 @@ import javax.ws.rs.client.ClientBuilder;
 import com.threepie.stocknewsticker.request.StockRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiStockInformationResponse;
 import com.threepie.stocknewsticker.utils.Constants;
-import com.threepie.stocknewsticker.external.StockGateway;
+import com.threepie.stocknewsticker.external.IntradayGateway;
 
 /**
  * Java wrapper for the NewsAPI, encapsulating all API endpoints and possible queries.
  */
 public class StockApi {
     private String apiKey;
-    private StockGateway stockGateway;
+    private IntradayGateway intradayGateway;
     private Client restClient;
 
     public StockApi() {
@@ -22,7 +22,7 @@ public class StockApi {
     }
 
     private void initializeEndpoints() {
-        this.stockGateway = new StockGateway();
+        this.intradayGateway = new IntradayGateway();
     }
 
     /**
@@ -52,6 +52,6 @@ public class StockApi {
      */
     public ApiStockInformationResponse sendStockRequest(StockRequestBuilder apiRequest) {
         initializeRequestAndClient(apiRequest);
-        return this.stockGateway.sendRequest(apiRequest, this.restClient);
+        return this.intradayGateway.sendRequest(apiRequest, this.restClient);
     }
 }

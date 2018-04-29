@@ -2,15 +2,7 @@ package com.threepie.stocknewsticker.request;
 
 import com.google.common.collect.Sets;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
 import java.util.Set;
-import java.util.TimeZone;
 
 /**
  * StockRequestBuilder is a Builder class that constructs a request based on given request parameters.

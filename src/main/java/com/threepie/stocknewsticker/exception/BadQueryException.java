@@ -6,6 +6,11 @@ package com.threepie.stocknewsticker.exception;
  */
 public class BadQueryException extends RuntimeException {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * @param message The message to attach to this Exception upon throwing.
      */
     public BadQueryException(String message) {
