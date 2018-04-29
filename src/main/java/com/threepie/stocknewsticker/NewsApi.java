@@ -6,14 +6,13 @@ import javax.ws.rs.client.ClientBuilder;
 import com.threepie.stocknewsticker.request.RequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
+import com.threepie.stocknewsticker.utils.Constants;
 import com.threepie.stocknewsticker.external.TopGateway;
 import com.threepie.stocknewsticker.external.EverythingGateway;
 import com.threepie.stocknewsticker.external.SourceGateway;
 
 /**
- * Java wrapper for the NewsAPI, encapsulating all API endpoints and possible queries. This class
- * exposes an interface to construct requests and to issue requests to the different REST
- * endpoints, as well as classes that map to the JSON responses of each endpoint.
+ * Java wrapper for the NewsAPI, encapsulating all API endpoints and possible queries.
  */
 public class NewsApi {
     private String apiKey;
@@ -22,12 +21,8 @@ public class NewsApi {
     private SourceGateway sourceGateway;
     private Client restClient;
 
-    /**
-     * Instantiate a new NewsApi object. Requires an API key.
-     * @param apiKey Your NewsAPI API key. To get one, visit https://newsapi.org/
-     */
-    public NewsApi(String apiKey) {
-        this.setApiKey(apiKey);
+    public NewsApi() {
+        this.setApiKey();
         initializeEndpoints();
     }
 
@@ -51,8 +46,8 @@ public class NewsApi {
         }
     }
 
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
+    public void setApiKey() {
+        this.apiKey = Constants.NEWS_API_KEY;
     }
 
     /**

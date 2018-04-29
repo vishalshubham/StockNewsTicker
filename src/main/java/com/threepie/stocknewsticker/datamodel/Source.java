@@ -1,5 +1,8 @@
 package com.threepie.stocknewsticker.datamodel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Maps to a Source object from the NewsAPI. Each Source object represents a news source from which
  * Articles can be sourced from, e.g. The New York Times. Refer to https://newsapi.org/docs/endpoints/sources
@@ -94,4 +97,24 @@ public class Source {
     public String country() {
         return this.country;
     }
+
+	public JSONObject getString() {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("id", id);
+			obj.put("name", name);
+			obj.put("description", description);
+			obj.put("url", url);
+			obj.put("category", category);
+			obj.put("language", language);
+			obj.put("country", country);
+			return obj;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

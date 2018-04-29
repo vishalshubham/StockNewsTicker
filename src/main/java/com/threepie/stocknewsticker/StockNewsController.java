@@ -31,11 +31,11 @@ public class StockNewsController {
 
 		if (handler==null) handler = new StockNewsHandler();
 		
-		NewsApi newsApi = new NewsApi("bebc2e5b6fe64fdd94aadbb64fd02bfa");
+		NewsApi newsApi = new NewsApi();
 		RequestBuilder sourcesRequest = new RequestBuilder().setLanguage("en");
 
 		ApiSourcesResponse apiSourcesResponse = newsApi.sendSourcesRequest(sourcesRequest);
 
-		return apiSourcesResponse.toString();
+		return apiSourcesResponse.getString().toString();
 	}
 }

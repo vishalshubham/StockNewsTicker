@@ -2,6 +2,10 @@ package com.threepie.stocknewsticker.response;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.threepie.stocknewsticker.datamodel.Source;
 
 /**
@@ -27,9 +31,20 @@ public class ApiSourcesResponse extends ApiResponse {
         return this.sources;
     }
 
-	@Override
-	public String toString() {
-		return "ApiSourcesResponse [sources=" + sources + "]";
+	public JSONObject getString() {
+		JSONObject obj = new JSONObject();
+		JSONArray arr = new JSONArray();
+		for(Source source : sources) {
+			arr.put(source.getString());
+		}
+		try {
+			obj.put("sources", arr);
+			return obj;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
