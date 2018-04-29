@@ -7,11 +7,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.threepie.stocknewsticker.datamodel.Article;
-import com.threepie.stocknewsticker.datamodel.Source;
 
 /**
- * Represents attributes that are common to the NewsAPI REST endpoints that respond with news
- * articles.
+ * Represents attributes that are common to the NewsAPI REST endpoints.
  */
 public class ApiArticlesResponse extends ApiResponse {
     private Integer totalResults;
@@ -31,20 +29,22 @@ public class ApiArticlesResponse extends ApiResponse {
     }
 
     /**
-     * @return Total number of news articles in the response. For the EverythingEndpoint, there
-     * may be more articles that match the given query than are actually returned in the response.
+     * @return Total number of news articles in the response.
      */
     public Integer totalResults() {
         return this.totalResults;
     }
 
     /**
-     * @return ArrayList of news Articles, where each element of the ArrayList is an Article.
+     * @return ArrayList of news Articles.
      */
     public ArrayList<Article> articles() {
         return this.articles;
     }
 
+    /**
+     * @return JSONObject of news Articles.
+     */
     public JSONObject getString() {
     		JSONObject obj = new JSONObject();
     		JSONArray arr = new JSONArray();

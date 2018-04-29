@@ -3,7 +3,7 @@ package com.threepie.stocknewsticker;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
-import com.threepie.stocknewsticker.request.RequestBuilder;
+import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
 import com.threepie.stocknewsticker.utils.Constants;
@@ -33,14 +33,14 @@ public class NewsApi {
     }
 
     /**
-     * Sets the API key in the given RequestBuilder object, and also instantiates a new JAX-RS
+     * Sets the API key in the given NewsRequestBuilder object, and also instantiates a new JAX-RS
      * client with which to issue HTTP requests, if one does not already exist. The JAX-RS client
      * is initialized here, and reused for all REST interactions, because instantiating a new
      * JAX-RS client is costly.
      * @param apiRequest Request to send to this Endpoint
      */
-    private void initializeRequestAndClient(RequestBuilder apiRequest) {
-        apiRequest.setApiKey(this.apiKey);
+    private void initializeRequestAndClient(NewsRequestBuilder apiRequest) {
+        apiRequest.setApikey(this.apiKey);
         if (this.restClient == null) {
             this.restClient = ClientBuilder.newClient();
         }
@@ -57,7 +57,7 @@ public class NewsApi {
      * @return ApiArticlesResponse object that is mapped from the response of this call to the
      * top-headlines REST endpoint.
      */
-    public ApiArticlesResponse sendTopRequest(RequestBuilder apiRequest) {
+    public ApiArticlesResponse sendTopRequest(NewsRequestBuilder apiRequest) {
         initializeRequestAndClient(apiRequest);
         return this.topGateway.sendRequest(apiRequest, this.restClient);
     }
@@ -69,7 +69,7 @@ public class NewsApi {
      * @return ApiArticlesResponse object that is mapped from the response of this call to the
      * everything REST endpoint.
      */
-    public ApiArticlesResponse sendEverythingRequest(RequestBuilder apiRequest) {
+    public ApiArticlesResponse sendEverythingRequest(NewsRequestBuilder apiRequest) {
         initializeRequestAndClient(apiRequest);
         return this.everythingGateway.sendRequest(apiRequest, this.restClient);
     }
@@ -81,7 +81,7 @@ public class NewsApi {
      * @return ApiSourcesResponse object that is mapped from the response of this call to the
      * everything REST endpoint.
      */
-    public ApiSourcesResponse sendSourcesRequest(RequestBuilder apiRequest) {
+    public ApiSourcesResponse sendSourcesRequest(NewsRequestBuilder apiRequest) {
         initializeRequestAndClient(apiRequest);
         return this.sourceGateway.sendRequest(apiRequest, this.restClient);
     }

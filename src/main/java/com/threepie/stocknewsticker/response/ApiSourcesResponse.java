@@ -24,14 +24,16 @@ public class ApiSourcesResponse extends ApiResponse {
     }
 
     /**
-     * @return ArrayList of news sources that NewsAPI allows, with each element of the ArrayList
-     * representing a different news source.
+     * @return ArrayList of news sources that NewsAPI allows
      */
     public ArrayList<Source> sources() {
         return this.sources;
     }
 
-	public JSONObject getString() {
+    /**
+     * @return JSONObject of news sources that NewsAPI allows
+     */
+    public JSONObject getString() {
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
 

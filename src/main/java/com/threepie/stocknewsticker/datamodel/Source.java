@@ -4,9 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Maps to a Source object from the NewsAPI. Each Source object represents a news source from which
- * Articles can be sourced from, e.g. The New York Times. Refer to https://newsapi.org/docs/endpoints/sources
- * for more information.
+ * Maps to a Source object from the NewsAPI.
  */
 public class Source {
     private String id;

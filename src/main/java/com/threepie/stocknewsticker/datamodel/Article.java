@@ -6,9 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Maps to an Article object from the NewsAPI. Each Article object represents one news article, and
- * consists of a Source object that describes the news source that this article is from, as well as
- * attributes that correspond to data within the actual article.
+ * Maps to an Article object from the NewsAPI.
  */
 public class Article {
     private Source source;
@@ -146,7 +144,6 @@ public class Article {
 			obj.put("publishedAt", publishedAt);
 			return obj;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

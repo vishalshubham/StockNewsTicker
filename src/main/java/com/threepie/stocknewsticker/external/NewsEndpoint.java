@@ -2,7 +2,7 @@ package com.threepie.stocknewsticker.external;
 
 import com.threepie.stocknewsticker.exception.AuthFailureException;
 import com.threepie.stocknewsticker.exception.BadQueryException;
-import com.threepie.stocknewsticker.request.RequestBuilder;
+import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiResponse;
 
 import javax.ws.rs.client.Client;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
  * class also exposes a sendRequest method for the end user to use to issue a request to a given
  * REST endpoint.
  */
-public abstract class Endpoint {
+public abstract class NewsEndpoint {
     /**
      * URL of the REST API endpoint
      */
@@ -39,7 +39,7 @@ public abstract class Endpoint {
      * @return ApiResponse object with attributes filled from the response of NewsAPI REST
      * endpoint.
      */
-    public abstract ApiResponse sendRequest(RequestBuilder apiRequest,
+    public abstract ApiResponse sendRequest(NewsRequestBuilder apiRequest,
                                             Client restClient);
 
     /**
@@ -53,7 +53,7 @@ public abstract class Endpoint {
      * @return WebTarget that contains the parameters from the apiRequest object encoded as a query
      * string for issuing as the actual GET request to this REST endpoint.
      */
-    abstract WebTarget buildTarget(RequestBuilder apiRequest, Client restClient);
+    abstract WebTarget buildTarget(NewsRequestBuilder apiRequest, Client restClient);
 
     void checkExceptions(Response response, ApiResponse responseObj) {
         if (response.getStatus() == 401) {

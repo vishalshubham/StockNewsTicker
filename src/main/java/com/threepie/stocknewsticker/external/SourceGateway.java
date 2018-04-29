@@ -1,7 +1,7 @@
 package com.threepie.stocknewsticker.external;
 
 import com.google.gson.Gson;
-import com.threepie.stocknewsticker.request.RequestBuilder;
+import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
 
 import javax.ws.rs.client.Client;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
  * For more information, refer to the REST API docs:
  * https://newsapi.org/docs/endpoints/sources
  */
-public class SourceGateway extends Endpoint {
+public class SourceGateway extends NewsEndpoint {
     /**
      * Instantiates a new SourcesEndpoint object. Sets the rootURL for the corresponding
      * REST endpoint.
@@ -45,12 +45,12 @@ public class SourceGateway extends Endpoint {
      * @return ApiSourcesResponse object that encapsulates the response from the sources REST
      * endpoint.
      */
-    public ApiSourcesResponse sendRequest(RequestBuilder apiRequest,
+    public ApiSourcesResponse sendRequest(NewsRequestBuilder apiRequest,
                                           Client restClient) {
         WebTarget target = buildTarget(apiRequest, restClient);
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON);
 
-        Response response = builder.header("X-Api-Key", apiRequest.getApiKey()).get();
+        Response response = builder.header("X-Api-Key", apiRequest.getApikey()).get();
         String responseBody = response.readEntity(String.class);
 
         ApiSourcesResponse responseObj = getDataFromResponseBody(responseBody);
@@ -69,7 +69,7 @@ public class SourceGateway extends Endpoint {
      * @return WebTarget that contains the parameters from the apiRequest object encoded as a query
      * string for issuing as the actual GET request to the sources REST endpoint.
      */
-    WebTarget buildTarget(RequestBuilder apiRequest, Client restClient) {
+    WebTarget buildTarget(NewsRequestBuilder apiRequest, Client restClient) {
         WebTarget target = restClient.target(this.getRootURL());
         if (apiRequest.getCategory() != null) {
             target = target.queryParam("category", apiRequest.getCategory());

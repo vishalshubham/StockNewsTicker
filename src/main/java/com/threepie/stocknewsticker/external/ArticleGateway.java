@@ -1,7 +1,7 @@
 package com.threepie.stocknewsticker.external;
 
 import com.google.gson.Gson;
-import com.threepie.stocknewsticker.request.RequestBuilder;
+import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 
 import javax.ws.rs.client.Client;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
  * Endpoint that returns ApiArticleResponse objects. Classes derived from this abstract class
  * all represent Endpoints that return Articles.
  */
-public abstract class ArticleGateway extends Endpoint {
+public abstract class ArticleGateway extends NewsEndpoint {
 	ArticleGateway() {
         super();
     }
@@ -41,12 +41,12 @@ public abstract class ArticleGateway extends Endpoint {
      *                   are expensive to instantiate.
      * @return ApiArticlesResponse object that encapsulates the response from the REST endpoint.
      */
-    public ApiArticlesResponse sendRequest(RequestBuilder apiRequest,
+    public ApiArticlesResponse sendRequest(NewsRequestBuilder apiRequest,
                                            Client restClient) {
         WebTarget target = buildTarget(apiRequest, restClient);
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON);
 
-        Response response = builder.header("X-Api-Key", apiRequest.getApiKey()).get();
+        Response response = builder.header("X-Api-Key", apiRequest.getApikey()).get();
         String responseBody = response.readEntity(String.class);
 
         ApiArticlesResponse responseObj = getDataFromResponseBody(responseBody);

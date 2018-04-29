@@ -3,7 +3,7 @@ package com.threepie.stocknewsticker.external;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
-import com.threepie.stocknewsticker.request.RequestBuilder;
+import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 
 /**
  * Represents the NewsAPI REST endpoint that returns the top headlines that match a given query.
@@ -31,7 +31,7 @@ public class TopGateway extends ArticleGateway {
      * @return WebTarget that contains the parameters from the apiRequest object encoded as a query
      * string for issuing as the actual GET request to the top-headlines REST endpoint.
      */
-    WebTarget buildTarget(RequestBuilder apiRequest, Client restClient) {
+    WebTarget buildTarget(NewsRequestBuilder apiRequest, Client restClient) {
         WebTarget target = restClient.target(this.getRootURL());
         if (apiRequest.getSources() != null) {
             target = target.queryParam("sources", apiRequest.getSources());
