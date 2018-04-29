@@ -34,18 +34,18 @@ public class ApiSourcesResponse extends ApiResponse {
 	public JSONObject getString() {
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
+
 		for(Source source : sources) {
 			arr.put(source.getString());
 		}
+
 		try {
 			obj.put("sources", arr);
 			return obj;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 }
 

@@ -2,6 +2,9 @@ package com.threepie.stocknewsticker.datamodel;
 
 import java.util.Objects;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Maps to an Article object from the NewsAPI. Each Article object represents one news article, and
  * consists of a Source object that describes the news source that this article is from, as well as
@@ -129,5 +132,23 @@ public class Article {
     public String publishedAt() {
         this.setPublishedAt(this.publishedAt);
         return this.publishedAt;
+    }
+
+    public JSONObject getString() {
+    		JSONObject obj = new JSONObject();
+		try {
+			obj.put("source", source);
+			obj.put("author", author);
+			obj.put("title", title);
+			obj.put("description", description);
+			obj.put("url", url);
+			obj.put("urlToImage", urlToImage);
+			obj.put("publishedAt", publishedAt);
+			return obj;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
     }
 }
