@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.news;
 
 import com.threepie.stocknewsticker.exception.AuthFailureException;
 import com.threepie.stocknewsticker.exception.BadQueryException;

@@ -3,10 +3,10 @@ package com.threepie.stocknewsticker;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
+import com.threepie.stocknewsticker.external.stock.IntradayGateway;
 import com.threepie.stocknewsticker.request.StockRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiStockInformationResponse;
 import com.threepie.stocknewsticker.utils.Constants;
-import com.threepie.stocknewsticker.external.IntradayGateway;
 
 /**
  * Java wrapper for the NewsAPI, encapsulating all API endpoints and possible queries.

@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.news;
 
 import com.threepie.stocknewsticker.datamodel.Article;
 import com.threepie.stocknewsticker.datamodel.Source;

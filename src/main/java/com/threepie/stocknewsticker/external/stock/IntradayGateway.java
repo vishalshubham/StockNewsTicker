@@ -1,23 +1,22 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.stock;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
-
-import com.threepie.stocknewsticker.request.NewsRequestBuilder;
+import com.threepie.stocknewsticker.request.StockRequestBuilder;
 
 /**
  * Represents the NewsAPI REST endpoint that returns the top headlines that match a given query.
  * For more information, refer to the REST API docs:
  * https://newsapi.org/docs/endpoints/top-headlines
  */
-public class TopGateway extends ArticleGateway {
+public class IntradayGateway extends StockGateway {
     /**
      * Instantiates a new TopEndpoint object. Sets the rootURL for the corresponding
      * REST endpoint.
      */
-    public TopGateway() {
+    public IntradayGateway() {
         super();
-        this.setRootURL("https://newsapi.org/v2/top-headlines?");
+        this.setRootURL("https://www.alphavantage.co/query?");
     }
 
     /**
@@ -31,25 +30,25 @@ public class TopGateway extends ArticleGateway {
      * @return WebTarget that contains the parameters from the apiRequest object encoded as a query
      * string for issuing as the actual GET request to the top-headlines REST endpoint.
      */
-    WebTarget buildTarget(NewsRequestBuilder apiRequest, Client restClient) {
+    WebTarget buildTarget(StockRequestBuilder apiRequest, Client restClient) {
         WebTarget target = restClient.target(this.getRootURL());
-        if (apiRequest.getSources() != null) {
-            target = target.queryParam("sources", apiRequest.getSources());
+        if (apiRequest.getFunction() != null) {
+            target = target.queryParam("function", apiRequest.getFunction());
         }
-        if (apiRequest.getQ() != null) {
-            target = target.queryParam("q", apiRequest.getQ());
+        if (apiRequest.getSymbol() != null) {
+            target = target.queryParam("symbol", apiRequest.getSymbol());
         }
-        if (apiRequest.getCategory() != null) {
-            target = target.queryParam("category", apiRequest.getCategory());
+        if (apiRequest.getInterval() != null) {
+            target = target.queryParam("interval", apiRequest.getInterval());
         }
-        if (apiRequest.getLanguage() != null) {
-            target = target.queryParam("language", apiRequest.getLanguage());
+        if (apiRequest.getOutputsize() != null) {
+            target = target.queryParam("outputsize", apiRequest.getOutputsize());
         }
-        if (apiRequest.getCountry() != null) {
-            target = target.queryParam("country", apiRequest.getCountry());
+        if (apiRequest.getDatatype() != null) {
+            target = target.queryParam("datatype", apiRequest.getDatatype());
         }
         if (apiRequest.getApikey() != null) {
-            target = target.queryParam("apiKey", apiRequest.getApikey());
+            target = target.queryParam("apikey", apiRequest.getApikey());
         }
         return target;
     }

@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.news;
 
 import com.google.gson.Gson;
 import com.threepie.stocknewsticker.request.NewsRequestBuilder;

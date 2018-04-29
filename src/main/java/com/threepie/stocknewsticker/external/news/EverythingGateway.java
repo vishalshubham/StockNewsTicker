@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.news;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;

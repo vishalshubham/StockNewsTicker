@@ -1,4 +1,4 @@
-package com.threepie.stocknewsticker.external;
+package com.threepie.stocknewsticker.external.stock;
 
 import java.util.ArrayList;
 import java.util.Iterator;

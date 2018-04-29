@@ -3,13 +3,13 @@ package com.threepie.stocknewsticker;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
+import com.threepie.stocknewsticker.external.news.EverythingGateway;
+import com.threepie.stocknewsticker.external.news.SourceGateway;
+import com.threepie.stocknewsticker.external.news.TopGateway;
 import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
 import com.threepie.stocknewsticker.utils.Constants;
-import com.threepie.stocknewsticker.external.TopGateway;
-import com.threepie.stocknewsticker.external.EverythingGateway;
-import com.threepie.stocknewsticker.external.SourceGateway;
 
 /**
  * Java wrapper for the NewsAPI, encapsulating all API endpoints and possible queries.
