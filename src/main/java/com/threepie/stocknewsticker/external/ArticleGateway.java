@@ -1,14 +1,21 @@
 package com.threepie.stocknewsticker.external;
 
-import com.google.gson.Gson;
+import com.threepie.stocknewsticker.datamodel.Article;
+import com.threepie.stocknewsticker.datamodel.Source;
 import com.threepie.stocknewsticker.request.NewsRequestBuilder;
 import com.threepie.stocknewsticker.response.ApiArticlesResponse;
+
+import java.util.ArrayList;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -26,10 +33,33 @@ public abstract class ArticleGateway extends NewsEndpoint {
      * @return Representation of the data in the raw JSON response
      */
     ApiArticlesResponse getDataFromResponseBody(String responseBody) {
-        ApiArticlesResponse responseObj = (new Gson()).fromJson(responseBody,
-                ApiArticlesResponse.class);
-        responseObj.setRawJSON(responseBody);
-        return responseObj;
+    		ApiArticlesResponse response = new ApiArticlesResponse();
+    	    ArrayList<Article> articles = new ArrayList<Article>();
+    		try {
+    			JSONObject result = new JSONObject(responseBody);
+			JSONArray array = result.getJSONArray("articles");
+			for(int i=0; i < array.length(); i++) {
+				JSONObject obj = array.getJSONObject(i);
+				Article article = new Article();
+				Source source = new Source();
+				
+				source.setId(obj.getJSONObject("source").getString("id"));
+				source.setName(obj.getJSONObject("source").getString("name"));
+				article.setSource(source);
+				article.setAuthor(obj.getString("author"));
+				article.setTitle(obj.getString("title"));
+				article.setDescription(obj.getString("description"));
+				article.setUrl(obj.getString("url"));
+				article.setUrlToImage(obj.getString("urlToImage"));
+				article.setPublishedAt(obj.getString("publishedAt"));
+				articles.add(article);
+			}
+			response.setTotalResults(result.getInt("totalResults"));
+			response.setArticles(articles);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+        return response;
     }
 
     /**
@@ -46,6 +76,9 @@ public abstract class ArticleGateway extends NewsEndpoint {
         WebTarget target = buildTarget(apiRequest, restClient);
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON);
         System.out.println("External News call: " + target.getUri());
+        builder.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        builder.header("Pragma", "no-cache");
+        builder.header("Expires", "0");
         Response response = builder.header("X-Api-Key", apiRequest.getApikey()).get();
         String responseBody = response.readEntity(String.class);
 

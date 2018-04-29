@@ -17,11 +17,11 @@ public class Article {
     private String urlToImage;
     private String publishedAt;
 
-    void setSource(Source source) {
+    public void setSource(Source source) {
         this.source = source;
     }
 
-    void setAuthor(String author) {
+    public void setAuthor(String author) {
         if (Objects.equals(author, "")) {
             this.author = null;
         }
@@ -30,7 +30,7 @@ public class Article {
         }
     }
 
-    void setTitle(String title) {
+    public void setTitle(String title) {
         if (Objects.equals(title, "")) {
             this.title = null;
         }
@@ -39,7 +39,7 @@ public class Article {
         }
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         if (Objects.equals(description, "")) {
             this.description = null;
         }
@@ -48,7 +48,7 @@ public class Article {
         }
     }
 
-    void setUrl(String url) {
+    public void setUrl(String url) {
         if (Objects.equals(url, "")) {
             this.url = null;
         }
@@ -57,7 +57,7 @@ public class Article {
         }
     }
 
-    void setUrlToImage(String urlToImage) {
+    public void setUrlToImage(String urlToImage) {
         if (Objects.equals(urlToImage, "")) {
             this.urlToImage = null;
         }
@@ -66,7 +66,7 @@ public class Article {
         }
     }
 
-    void setPublishedAt(String publishedAt) {
+    public void setPublishedAt(String publishedAt) {
         if (Objects.equals(publishedAt, "")) {
             this.publishedAt = null;
         }

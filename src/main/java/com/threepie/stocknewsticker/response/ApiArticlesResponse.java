@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.threepie.stocknewsticker.datamodel.Article;
+import com.threepie.stocknewsticker.datamodel.StockTimestampData;
 
 /**
  * Represents attributes that are common to the NewsAPI REST endpoints.
@@ -20,11 +21,11 @@ public class ApiArticlesResponse extends ApiResponse {
         this.setTotalResults(0);
     }
 
-    void setTotalResults(Integer totalResults) {
+    public void setTotalResults(Integer totalResults) {
         this.totalResults = totalResults;
     }
 
-    void setArticles(ArrayList<Article> articles) {
+    public void setArticles(ArrayList<Article> articles) {
         this.articles = articles;
     }
 
@@ -49,8 +50,10 @@ public class ApiArticlesResponse extends ApiResponse {
     		JSONObject obj = new JSONObject();
     		JSONArray arr = new JSONArray();
 
-    		for(Article article : articles) {
-    			arr.put(article.getString());
+    		if (articles!=null && articles.size()>0) {
+    			for(Article article : articles) {
+    				arr.put(article.getString());
+    			}
     		}
 
     		try {

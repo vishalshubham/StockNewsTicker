@@ -80,8 +80,10 @@ public class ApiStockInformationResponse extends ApiResponse {
     		JSONObject obj = new JSONObject();
     		JSONArray arr = new JSONArray();
 
-    		for(StockTimestampData timestamp : timestamps) {
-    			arr.put(timestamp.getString());
+    		if (timestamps!=null && timestamps.size()>0) {
+    			for(StockTimestampData timestamp : timestamps) {
+    				arr.put(timestamp.getString());
+    			}
     		}
 
     		try {

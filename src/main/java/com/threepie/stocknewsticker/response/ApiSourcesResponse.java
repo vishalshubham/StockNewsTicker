@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.threepie.stocknewsticker.datamodel.Source;
+import com.threepie.stocknewsticker.datamodel.StockTimestampData;
 
 /**
  * Represents attributes that are common to the NewsAPI REST endpoints that respond with news
@@ -37,8 +38,10 @@ public class ApiSourcesResponse extends ApiResponse {
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
 
-		for(Source source : sources) {
-			arr.put(source.getString());
+		if (sources!=null && sources.size()>0) {
+			for(Source source : sources) {
+				arr.put(source.getString());
+			}
 		}
 
 		try {
