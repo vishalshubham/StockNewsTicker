@@ -48,6 +48,9 @@ public class TopGateway extends ArticleGateway {
         if (apiRequest.getCountry() != null) {
             target = target.queryParam("country", apiRequest.getCountry());
         }
+        if (apiRequest.getApikey() != null) {
+            target = target.queryParam("apiKey", apiRequest.getApikey());
+        }
         return target;
     }
 }

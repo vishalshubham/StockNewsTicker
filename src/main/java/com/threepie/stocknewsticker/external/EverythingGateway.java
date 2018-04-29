@@ -57,6 +57,9 @@ public class EverythingGateway extends ArticleGateway {
         if (apiRequest.getPage() != null) {
             target = target.queryParam("page", apiRequest.getPage().toString());
         }
+        if (apiRequest.getApikey() != null) {
+            target = target.queryParam("apiKey", apiRequest.getApikey());
+        }
         return target;
     }
 }

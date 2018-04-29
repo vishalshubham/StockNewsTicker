@@ -80,6 +80,9 @@ public class SourceGateway extends NewsEndpoint {
         if (apiRequest.getCountry() != null) {
             target = target.queryParam("country", apiRequest.getCountry());
         }
+        if (apiRequest.getApikey() != null) {
+            target = target.queryParam("apiKey", apiRequest.getApikey());
+        }
         return target;
     }
 
