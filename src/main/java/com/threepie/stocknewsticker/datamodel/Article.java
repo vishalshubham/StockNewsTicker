@@ -135,7 +135,7 @@ public class Article {
     public JSONObject getString() {
     		JSONObject obj = new JSONObject();
 		try {
-			obj.put("source", source);
+			obj.put("source", source.getString());
 			obj.put("author", author);
 			obj.put("title", title);
 			obj.put("description", description);
