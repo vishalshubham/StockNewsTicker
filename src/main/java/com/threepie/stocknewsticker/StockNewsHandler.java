@@ -61,7 +61,7 @@ public class StockNewsHandler {
 				.setSymbol(symbol)
 				.setFunction("TIME_SERIES_INTRADAY")
 				.setInterval("5min")
-				.setOutputsize("full");
+				.setOutputsize("compact");
 
 		stockRequest.setApikey(Constants.STOCK_API_KEY);
 
