@@ -55,7 +55,7 @@ public class EverythingGateway extends ArticleGateway {
             target = target.queryParam("sortBy", apiRequest.getSortBy());
         }
         if (apiRequest.getPage() != null) {
-            target = target.queryParam("page", apiRequest.getPage().toString());
+            target = target.queryParam("pageSize", apiRequest.getPage().toString());
         }
         if (apiRequest.getApikey() != null) {
             target = target.queryParam("apiKey", apiRequest.getApikey());

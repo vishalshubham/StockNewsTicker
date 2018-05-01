@@ -9,17 +9,27 @@ import com.threepie.stocknewsticker.response.ApiArticlesResponse;
 import com.threepie.stocknewsticker.response.ApiSourcesResponse;
 import com.threepie.stocknewsticker.response.ApiStockInformationResponse;
 import com.threepie.stocknewsticker.utils.Constants;
+import com.threepie.stocknewsticker.utils.Error;
+import com.threepie.stocknewsticker.utils.ValidStocks;
 
 public class StockNewsHandler {
 	NewsApi newsApi;
 	StockApi stockApi;
+	ValidStocks validStocks;
 
 	public StockNewsHandler () {
 		newsApi = new NewsApi();
 		stockApi = new StockApi();
+		validStocks = new ValidStocks();
 	}
 
 	public String getStockInformation(String symbol) {
+		if (!validStocks.isValid(symbol)) {
+			return Error.sendError(
+					"error",
+					"inValidStock",
+					"Currently, We do not support this stock. Please check the list of valid stocks");
+		}
 		JSONObject result = new JSONObject();
 		try {
 			result.put("news", getArticles(symbol));
@@ -46,7 +56,7 @@ public class StockNewsHandler {
 		NewsRequestBuilder sourcesRequest = new NewsRequestBuilder()
 				.setQ(symbol + " stock")
 				.setLanguage("en")
-			    .setPage(2);
+			    .setPage(100);
 
 		sourcesRequest.setApikey(Constants.NEWS_API_KEY);
 
