@@ -1,8 +1,8 @@
-# java-getting-started
+# Stock News Ticker
 
 [![CircleCI](https://circleci.com/gh/heroku/java-getting-started.svg?style=svg)](https://circleci.com/gh/heroku/java-getting-started)
 
-A barebones Java app, which can easily be deployed to Heroku.
+A stock news app, which can easily provide information about any stock in near-realtime.
 
 This application supports the [Getting Started with Java on Heroku](https://devcenter.heroku.com/articles/getting-started-with-java) article - check it out.
 
